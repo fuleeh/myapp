@@ -8,11 +8,11 @@
         <thead>
           <tr>
             <th>Id</th>
+            <th>Photo</th>
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
             <th>Status</th>
-            <th>Photo</th>
             <th>Created</th>
             <th>Updated</th>
           </tr>
@@ -25,11 +25,11 @@
 
           <tr>
             <td>{{$user->id}}</td>
-            <td>{{$user->name}}</td>
+            <td><img height="50" src="{{$user->photo ? $user->photo->file : '/images/asd.jpg'}}"</td>
+            <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
             <td>{{$user->email}}</td>
             <td>{{$user->role->name}}</td>
             <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
-            <td>{{$user->photo->path}}</td>
             <td>{{$user->created_at->diffForHumans()}}</td>
             <td>{{$user->updated_at->diffForHumans()}}</td>
           </tr>
